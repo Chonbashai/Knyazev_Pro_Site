@@ -42,25 +42,39 @@
   // Bind CTA
   document.querySelectorAll('[data-action="mini-brief"]').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      if(typeof briefModal.showModal === 'function'){
-        briefModal.showModal();
-      }else{
-        briefModal.setAttribute('open','');
+      if(briefModal){
+        if(typeof briefModal.showModal === 'function'){
+          briefModal.showModal();
+        }else{
+          // Fallback для старых браузеров (iOS < 15.4)
+          briefModal.setAttribute('open','');
+          briefModal.style.display = 'block';
+        }
       }
       trackEvent('CTA','open_mini_brief','button_click');
     });
   });
 
+  // Helper функция для smooth scroll с fallback для iOS
+  const smoothScrollTo = (element) => {
+    if (!element) return;
+    if ('scrollBehavior' in document.documentElement.style) {
+      element.scrollIntoView({behavior:'smooth'});
+    } else {
+      element.scrollIntoView();
+    }
+  };
+
   document.querySelectorAll('[data-action="open-portfolio"]').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      document.getElementById('cases')?.scrollIntoView({behavior:'smooth'});
+      smoothScrollTo(document.getElementById('cases'));
       trackEvent('CTA','open_portfolio','button_click');
     });
   });
 
   document.querySelectorAll('[data-action="scroll-to-consultation"]').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      document.getElementById('consultation')?.scrollIntoView({behavior:'smooth'});
+      smoothScrollTo(document.getElementById('consultation'));
       trackEvent('CTA','scroll_to_consultation','button_click');
     });
   });
