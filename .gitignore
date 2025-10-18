@@ -1,0 +1,28 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Large video files (optimize before committing)
+assets/video/*.mp4
+
+# AI source files
+*.ai
+*.psd
+
+# Temporary files
+*.bak
+*.cache
+
