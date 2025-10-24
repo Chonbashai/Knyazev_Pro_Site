@@ -328,6 +328,52 @@
   }
   window.trackEvent = trackEvent;
 
+  // Product includes accordion
+  document.querySelectorAll('.product-includes-toggle').forEach(button => {
+    button.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      const content = this.nextElementSibling;
+      const icon = this.querySelector('.toggle-icon');
+
+      if (isExpanded) {
+        // Collapse
+        this.setAttribute('aria-expanded', 'false');
+        content.classList.remove('expanded');
+        icon.classList.remove('rotated');
+      } else {
+        // Expand
+        this.setAttribute('aria-expanded', 'true');
+        content.classList.add('expanded');
+        icon.classList.add('rotated');
+      }
+
+      trackEvent('Product','toggle_includes',isExpanded ? 'collapse' : 'expand');
+    });
+  });
+
+  // Product examples accordion
+  document.querySelectorAll('.product-examples-toggle').forEach(button => {
+    button.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      const content = this.nextElementSibling;
+      const icon = this.querySelector('.toggle-icon');
+
+      if (isExpanded) {
+        // Collapse
+        this.setAttribute('aria-expanded', 'false');
+        content.classList.remove('expanded');
+        icon.classList.remove('rotated');
+      } else {
+        // Expand
+        this.setAttribute('aria-expanded', 'true');
+        content.classList.add('expanded');
+        icon.classList.add('rotated');
+      }
+
+      trackEvent('Product','toggle_examples',isExpanded ? 'collapse' : 'expand');
+    });
+  });
+
   // Submit mini-brief
   if(briefForm){
     briefForm.addEventListener('submit', async (e)=>{

@@ -30,14 +30,14 @@
     </header>
     
     <header class="container">
-      <h1 style="text-align:center;font-size:48px;margin-bottom:24px">Портфолио</h1>
+      <h1 style="text-align:center;font-size:48px;margin-bottom:24px">ПОРТФОЛИО</h1>
       <div style="text-align:center;margin-bottom:48px">
         <img src="assets/img/logo _ pattern/raster/png/pattern white small.png" alt="Князев ПРО" style="height:40px;width:auto;opacity:0.3">
       </div>
       <div class="case-filters">
         <button data-filter="industry" class="active">
           <img src="assets/img/logo _ pattern/raster/png/logo_beige_small.png" alt="">
-          INDUSTRY
+          PRESENTATION
         </button>
         <button data-filter="brand">
           <img src="assets/img/logo _ pattern/raster/png/logo_beige_small.png" alt="">
@@ -59,9 +59,13 @@
           <img src="assets/img/logo _ pattern/raster/png/logo_beige_small.png" alt="">
           PR
         </button>
+        <button data-filter="new">
+          <img src="assets/img/logo _ pattern/raster/png/logo_beige_small.png" alt="">
+          NEW PROJECTS
+        </button>
         <button data-filter="all">
           <img src="assets/img/logo _ pattern/raster/png/logo_beige_small.png" alt="">
-          ALL WORKS
+          ALL PROJECTS
         </button>
       </div>
     </header>
@@ -140,16 +144,16 @@
             '4c2a97327d3147bf79be95b3b37bd4da'
           ],
           pr: [                                   // PR/Имиджевая реклама
+            'e348029d9b7f531396ea9aee45274dd9',
+            'b46817a47f3796204dfd06b814c25e17',
+            'd22b38eef78a151f8626be672dc572c5',
             'bf373100ce030e8e61c9a99c470edadc',
             'cd7e38638c9a578ec2f9dfda64c6df3a',
             'e940e0fa8f703a920ca2f4b8f15dff43',
-            'b46817a47f3796204dfd06b814c25e17',
             'd98b1c27e63466a12fe3026a72a9cf0b',
             '8d6a630f18044da9d67f7514b2e810f6',
             'bd567efa5f684a9ff002b6d9f131f5c0',
             '29e435126a3e109d14ac3a4456454933',
-            'e348029d9b7f531396ea9aee45274dd9',
-            'd22b38eef78a151f8626be672dc572c5',
             '57aac7897318d9d12d4d10c33ccd996e',
             '22b617ed91972e1294b1da31d37c0e1f',
             '2620229e172a5d2172778e673e98f0ce',
@@ -162,6 +166,7 @@
             'e22cdc6831b09a7c0fa5a962ee36cc6f'
           ],
           other: [],                              // Пока пусто - ждем список ID
+          new: [],                                // Новые работы
           all: [
             '74cffbbaef5caf1043813eb5e9c4362f', 'b46817a47f3796204dfd06b814c25e17', 'b918021f6cb0962e465b0ba0adf57a76',
             'c66903c6fd67a9bef55c3915db46ad05', 'dcf1e99b5d0d0c9705a1b097fa691689', 'a5b6f4bd39c6c09c55d952c325875781',
@@ -241,16 +246,16 @@
             '4c2a97327d3147bf79be95b3b37bd4da'
           ],
           pr: [                                   // PR/Имиджевая реклама
+            'e348029d9b7f531396ea9aee45274dd9',
+            'b46817a47f3796204dfd06b814c25e17',
+            'd22b38eef78a151f8626be672dc572c5',
             'bf373100ce030e8e61c9a99c470edadc',
             'cd7e38638c9a578ec2f9dfda64c6df3a',
             'e940e0fa8f703a920ca2f4b8f15dff43',
-            'b46817a47f3796204dfd06b814c25e17',
             'd98b1c27e63466a12fe3026a72a9cf0b',
             '8d6a630f18044da9d67f7514b2e810f6',
             'bd567efa5f684a9ff002b6d9f131f5c0',
             '29e435126a3e109d14ac3a4456454933',
-            'e348029d9b7f531396ea9aee45274dd9',
-            'd22b38eef78a151f8626be672dc572c5',
             '57aac7897318d9d12d4d10c33ccd996e',
             '22b617ed91972e1294b1da31d37c0e1f',
             '2620229e172a5d2172778e673e98f0ce',
@@ -262,7 +267,8 @@
             'd03501b3fd1be1ee5a4edb9e8584108c',
             'e22cdc6831b09a7c0fa5a962ee36cc6f'
           ],
-          other: []     // Пока пусто - ждем список ID
+          other: [],    // Пока пусто - ждем список ID
+          new: []       // Новые работы
         };
       }
       
@@ -301,15 +307,16 @@
             content.className='case-content';
             // Создаем более информативные заголовки на основе категории
             const categoryTitles = {
-              industry: 'Промышленный проект',
-              brand: 'Бренд-фильм',
-              events: 'Ивент-видео',
-              travel: 'Travel-контент',
-              sport: 'Автомобильный проект',
-              pr: 'PR-видео',
-              other: 'Проект'
+              industry: 'ПРОМЫШЛЕННЫЙ ПРОЕКТ',
+              brand: 'БРЕНД-ФИЛЬМ',
+              events: 'ИВЕНТ-ВИДЕО',
+              travel: 'TRAVEL-КОНТЕНТ',
+              sport: 'АВТОМОБИЛЬНЫЙ ПРОЕКТ',
+              pr: 'PR-ВИДЕО',
+              other: 'ПРОЕКТ',
+              new: 'НОВАЯ РАБОТА'
             };
-            const title = categoryTitles[category] || 'Проект';
+            const title = categoryTitles[category] || 'ПРОЕКТ';
             content.innerHTML=`<h4>${title}</h4>`;
             article.appendChild(video);
             article.appendChild(content);
@@ -319,19 +326,23 @@
       }
       render();
 
-      // Инициализация фильтра "industry" по умолчанию
+      // Проверяем URL-якорь для автоматического выбора фильтра
+      const hash = window.location.hash.replace('#', '');
+      const defaultFilter = hash && ['industry', 'brand', 'events', 'travel', 'sport', 'pr', 'new', 'all'].includes(hash) ? hash : 'industry';
+
+      // Инициализация фильтра по умолчанию или из URL-якоря
       if(filterBar){
-        const industryBtn = filterBar.querySelector('[data-filter="industry"]');
-        if(industryBtn){
+        const defaultBtn = filterBar.querySelector(`[data-filter="${defaultFilter}"]`);
+        if(defaultBtn){
           // Убираем активный класс со всех кнопок
           filterBar.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
-          // Добавляем активный класс к кнопке "industry"
-          industryBtn.classList.add('active');
+          // Добавляем активный класс к кнопке по умолчанию
+          defaultBtn.classList.add('active');
           // Применяем фильтр
           const all = document.querySelectorAll('.case-item');
           all.forEach(card=>{
             const cat = card.getAttribute('data-category');
-            card.style.display = (cat === 'industry') ? 'grid' : 'none';
+            card.style.display = (defaultFilter === 'all' || cat === defaultFilter) ? 'grid' : 'none';
           });
         }
       }

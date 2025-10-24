@@ -352,7 +352,7 @@ section{padding:80px 24px}
 }   
 .social-wrap{display:flex;justify-content:space-between;align-items:center}
 .social-icons{display:flex;gap:12px}
-.social-link img{width:96px;height:96px;display:block;filter:grayscale(100%) invert(80%)}
+.social-link img{width:48px;height:48px;display:block;filter:grayscale(100%) invert(80%)}
 .copyright{color:var(--muted)}
 
 /* Price page styles */
@@ -377,18 +377,37 @@ section{padding:80px 24px}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:24px;margin-top:32px}
 .product-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;position:relative}
 .product-card.featured{border:2px solid var(--brand);background:linear-gradient(135deg,var(--card) 0%,rgba(176,155,126,.05) 100%)}
-.product-card h3{color:var(--brand);margin-bottom:16px;font-size:1.1rem;font-weight:600}
-.product-price{font-size:1.5rem;font-weight:700;color:var(--brand);margin-bottom:4px}
+.product-card h3{color:var(--brand);margin-bottom:16px;font-size:1.1rem;font-weight:600;text-align:center}
+.price-container{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.price-badge{font-size:1.1rem;font-weight:700;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);display:inline-block}
+.standart-badge{color:#8F8F8F;border-color:#8F8F8F;background:rgba(143,143,143,0.05)}
+.premium-badge{color:#E0E0E0;border-color:#E0E0E0;background:rgba(224,224,224,0.05)}
+.full-width-standart{width:100%;text-align:center;margin-bottom:8px}
+.full-width-premium{width:100%;text-align:center;margin-bottom:8px}
 .product-price-note{font-size:.9rem;color:var(--muted);margin-bottom:16px}
 .product-includes{margin-bottom:16px}
-.product-includes h4{color:var(--text);margin-bottom:12px;font-size:1rem;font-weight:600}
+.product-includes-toggle{background:none;border:none;padding:0;width:100%;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;color:var(--text);font-size:1rem;font-weight:600;margin-bottom:12px}
+.product-includes-toggle:hover{color:var(--brand)}
+.product-includes-toggle:focus{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+.product-examples{margin-bottom:16px}
+.product-examples-toggle{background:none;border:none;padding:0;width:100%;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;color:var(--text);font-size:1rem;font-weight:600;margin-bottom:12px}
+.product-examples-toggle:hover{color:var(--brand)}
+.product-examples-toggle:focus{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+.toggle-icon{font-size:0.8rem;transition:transform 0.3s ease;color:var(--brand)}
+.toggle-icon.rotated{transform:rotate(180deg)}
+.product-includes-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease, opacity 0.3s ease;opacity:0}
+.product-includes-content.expanded{max-height:500px;opacity:1}
+.product-examples-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease, opacity 0.3s ease;opacity:0}
+.product-examples-content.expanded{max-height:300px;opacity:1}
+.product-examples-content p{margin:0 0 12px 0;color:var(--muted);font-size:.9rem}
+.product-examples-content .btn{margin-right:8px;margin-bottom:8px;font-size:.9rem}
 .product-includes ul{list-style:none;padding:0;margin:0}
 .product-includes li{padding:8px 0;border-bottom:1px solid var(--line);color:var(--text);font-size:.9rem}
 .product-includes li:last-child{border-bottom:none}
 .product-when{font-size:.9rem;color:var(--muted);padding-top:8px}
 
 .additional-services{margin-top:48px;padding:32px;background:var(--card);border-radius:12px;border:1px solid var(--line)}
-.additional-services h3{color:var(--brand);margin-bottom:24px;font-size:1.3rem}
+.additional-services h3{color:var(--brand);margin-bottom:24px;font-size:1.3rem;text-align:center}
 .addons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:24px}
 .addon-item{padding:12px;background:var(--bg);border-radius:8px;color:var(--text);font-size:.9rem}
 .payment-info{padding:16px;background:var(--brand);color:#111;border-radius:8px;text-align:center;font-weight:600}
