@@ -27,11 +27,41 @@
   // Mobile menu toggle
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
   const navMenu = document.getElementById('navMenu');
+  const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
+  
+  // Scroll blocking functions
+  let scrollPosition = 0;
+  
+  function lockScroll() {
+    scrollPosition = window.pageYOffset;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+  }
+  
+  function unlockScroll() {
+    document.body.style.removeProperty('overflow');
+    document.body.style.removeProperty('position');
+    document.body.style.removeProperty('top');
+    document.body.style.removeProperty('width');
+    window.scrollTo(0, scrollPosition);
+  }
   
   if(mobileMenuToggle && navMenu){
     mobileMenuToggle.addEventListener('click', function(){
-      this.classList.toggle('active');
+      const isActive = this.classList.toggle('active');
       navMenu.classList.toggle('active');
+      if(mobileMenuBackdrop){
+        mobileMenuBackdrop.classList.toggle('active');
+      }
+      
+      // Lock/unlock scroll
+      if(isActive){
+        lockScroll();
+      } else {
+        unlockScroll();
+      }
     });
     
     // Close menu when clicking on a link
@@ -39,15 +69,43 @@
       link.addEventListener('click', function(){
         mobileMenuToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        if(mobileMenuBackdrop){
+          mobileMenuBackdrop.classList.remove('active');
+        }
+        unlockScroll();
       });
     });
     
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e){
-      if(!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)){
+    // Close menu when clicking backdrop
+    if(mobileMenuBackdrop){
+      mobileMenuBackdrop.addEventListener('click', function(){
         mobileMenuToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        this.classList.remove('active');
+        unlockScroll();
+      });
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e){
+      if(!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target) && (!mobileMenuBackdrop || !mobileMenuBackdrop.contains(e.target))){
+        mobileMenuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        if(mobileMenuBackdrop){
+          mobileMenuBackdrop.classList.remove('active');
+        }
+        unlockScroll();
       }
+    });
+    
+    // Close menu on orientation change
+    window.addEventListener('orientationchange', function(){
+      mobileMenuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+      if(mobileMenuBackdrop){
+        mobileMenuBackdrop.classList.remove('active');
+      }
+      unlockScroll();
     });
   }
 
