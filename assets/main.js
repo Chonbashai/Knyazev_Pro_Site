@@ -1,4 +1,29 @@
 (function(){
+  // Force video playback on mobile devices
+  const heroVideo = document.querySelector('.hero-video');
+  if(heroVideo){
+    // Ensure video plays on Android and other mobile browsers
+    heroVideo.setAttribute('playsinline', '');
+    heroVideo.setAttribute('webkit-playsinline', '');
+    heroVideo.muted = true;
+    
+    // Try to play immediately
+    const playPromise = heroVideo.play();
+    if(playPromise !== undefined){
+      playPromise.catch(err => {
+        console.log('Autoplay prevented, trying on user interaction:', err);
+        // Fallback: play on first user interaction
+        const playOnInteraction = () => {
+          heroVideo.play();
+          document.removeEventListener('touchstart', playOnInteraction);
+          document.removeEventListener('click', playOnInteraction);
+        };
+        document.addEventListener('touchstart', playOnInteraction, {once: true});
+        document.addEventListener('click', playOnInteraction, {once: true});
+      });
+    }
+  }
+
   // Mobile menu toggle
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
   const navMenu = document.getElementById('navMenu');

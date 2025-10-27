@@ -2,7 +2,9 @@
 <html lang="ru">
   <head>      
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Князев ПРО — видеопродакшн</title>
     <meta name="description" content="Бренд‑фильмы, имиджевые ролики и PR‑видео, которые работают на бизнес-результат.">
     <link rel="preload" href="assets/styles.css" as="style">
@@ -12,7 +14,7 @@
   <body class="theme-dark">
     <header class="hero" id="hero">
       <div class="hero-media">
-        <video class="hero-video" src="assets/video/SHOWREEL 2024.mp4" autoplay muted playsinline loop></video>
+        <video class="hero-video" src="assets/video/SHOWREEL 2024.mp4" poster="assets/img/camera.jpg" autoplay muted playsinline loop preload="auto" webkit-playsinline></video>
         <div class="hero-overlay"></div>
       </div>
       
@@ -37,13 +39,13 @@
           </ul>
         </nav>
       </header>
-      <div class="hero-content">
-        <div class="cta-buttons" style="justify-content:flex-start;margin-bottom:24px">
-          <button class="btn btn-secondary urgent-cta" data-action="mini-brief" style="padding:24px 36px;font-size:20px;background:transparent;border:1px solid var(--brand);color:var(--brand)">Заполнить мини‑бриф (2 минуты)</button>
-          <button class="btn btn-secondary" data-action="open-portfolio" style="padding:24px 36px;font-size:20px;background:transparent;border:1px solid var(--brand);color:var(--brand)">Смотреть портфолио</button>
-        </div>
+      <div class="hero-content container">
         <h1>Видео, которое работает на бизнес</h1>
         <p>Бренд‑фильмы и имиджевые ролики, которые выигрывают тендеры, привлекают инвесторов и усиливают продажи</p>
+        <div class="cta-buttons">
+          <button class="btn btn-secondary urgent-cta" data-action="mini-brief">Заполнить мини‑бриф (2 минуты)</button>
+          <button class="btn btn-secondary" data-action="open-portfolio">Смотреть портфолио</button>
+        </div>
         <div class="fomo-counter">
           <span>Съёмочные даты на <strong id="nextMonth">...</strong> закрываются через: <strong id="countdown">—</strong></span>
         </div>
