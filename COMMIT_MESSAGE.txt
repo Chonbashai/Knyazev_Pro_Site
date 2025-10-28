@@ -1,0 +1,39 @@
+Fix mobile zoom bug causing black gutter on right side
+
+Fixed issue where pinch-zooming out on mobile caused content to shift left
+with a black area appearing on the right half of the screen.
+
+Root causes:
+- Use of 100vw (includes scrollbar width) causing horizontal overflow
+- Missing background color on html element
+- Viewport meta tag missing minimum-scale and viewport-fit
+
+Changes:
+- Replaced all max-width: 100vw with max-width: 100% (5 instances)
+- Added background: var(--bg) to html element
+- Added max-width: 100% to html, body for extra protection
+- Updated viewport meta tag on all 5 HTML pages:
+  - Added minimum-scale=1.0 to prevent over-zoom-out
+  - Added viewport-fit=cover for notched devices
+- Added defensive CSS rules (min-width: 100% on html/body)
+
+Files modified:
+- assets/styles.css: Core layout and overflow fixes
+- index.html: Updated viewport meta tag
+- portfolio.html: Updated viewport meta tag
+- price.html: Updated viewport meta tag
+- founder.html: Updated viewport meta tag
+- contact.html: Updated viewport meta tag
+
+Result:
+- No horizontal scrollbar at any zoom level
+- Content remains properly aligned when zooming
+- Background covers entire viewport
+- Black gutter no longer appears
+- Maintains accessibility (zoom still enabled up to 5x)
+
+Testing:
+- Verified all HTML files serve correctly
+- Confirmed no 100vw instances remain in CSS
+- Validated viewport-fit=cover and minimum-scale in all HTML files
+- Ensured background colors are consistent
