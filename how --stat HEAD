@@ -1,0 +1,34 @@
+[33mcommit bfec7ab07248f76b9911929e5f9f96c940ccc70d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbugfix-mobile-zoom-black-gutter[m[33m, [m[1;31morigin/bugfix-mobile-zoom-black-gutter[m[33m)[m
+Author: engine-labs-app[bot] <140088366+engine-labs-app[bot]@users.noreply.github.com>
+Date:   Tue Oct 28 18:28:31 2025 +0000
+
+    fix(responsive): fix mobile zoom bug causing horizontal shift and black gutter
+    
+    Fix issue where pinch-zooming out on mobile caused content to shift
+    left, revealing a black area on the right. Change needed to prevent
+    horizontal overflow and to ensure background color always fills the
+    viewport on zoom and rotation.
+    
+    - Replace all max-width: 100vw usages with max-width: 100% for
+      hero, section, header, footer, and modal.
+    - Add background color and max-width to html element alongside body.
+    - Update viewport meta tag on all HTML pages to include minimum-scale=1.0
+      and viewport-fit=cover for proper mobile behavior and safe-area coverage.
+    - Add defensive min-width and overflow protection rules to CSS.
+    
+    Users now experience consistent, full-background layouts when zoomed on
+    iOS Safari and Android Chrome. Accessibility zoom up to 5x is maintained.
+    No breaking changes or performance impact expected.
+
+ COMMIT_MESSAGE.txt            |  39 [32m+++++[m
+ FIX_SUMMARY.md                | 146 [32m++++++++++++++++++[m
+ MOBILE_ZOOM_BEST_PRACTICES.md | 275 [32m+++++++++++++++++++++++++++++++++[m
+ ZOOM_BUG_FIX.md               | 351 [32m++++++++++++++++++++++++++++++++++++++++++[m
+ ZOOM_BUG_TEST_CHECKLIST.md    | 339 [32m++++++++++++++++++++++++++++++++++++++++[m
+ assets/styles.css             |  16 [32m+[m[31m-[m
+ contact.html                  |   2 [32m+[m[31m-[m
+ founder.html                  |   2 [32m+[m[31m-[m
+ index.html                    |   2 [32m+[m[31m-[m
+ portfolio.html                |   2 [32m+[m[31m-[m
+ price.html                    |   2 [32m+[m[31m-[m
+ 11 files changed, 1165 insertions(+), 11 deletions(-)
